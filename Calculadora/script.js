@@ -20,8 +20,169 @@ const bt7 = document.getElementById('bt7');
 const bt8 = document.getElementById('bt8');
 const bt9 = document.getElementById('bt9');
 const bt0 = document.getElementById('bt0');
-
 const AC = document.getElementById('btAC');
+
+/**
+ * Calculadora
+ */
+
+class calculadora {
+
+    soma(){
+        console.log("oi")
+        op_to_do = 'soma';
+    
+        if(val == 1) {
+            primeiro_valor = Number(display.textContent);
+            console.log(primeiro_valor);
+        }else {
+            val = 1;
+            segundo_valor = Number(display.textContent);
+            console.log(segundo_valor);
+    
+            const result = primeiro_valor + segundo_valor;
+            console.log(primeiro_valor + '+' + segundo_valor + '=' + result);
+            display.innerText = result;
+        }
+    
+    }
+
+    subtracao(){
+        op_to_do = 'subtracao';
+    
+        if(val == 1) {
+            primeiro_valor = Number(display.textContent);
+            console.log(primeiro_valor);
+        }else {
+            val = 1;
+            segundo_valor = Number(display.textContent);
+            console.log(segundo_valor);
+    
+            const result = primeiro_valor - segundo_valor;
+            console.log(primeiro_valor + '-' + segundo_valor + '=' + result);
+            display.innerText = result;
+        }
+    }
+
+    divisao(){
+        op_to_do = 'divisao';
+    
+        if(val == 1) {
+            primeiro_valor = Number(display.textContent);
+            console.log(primeiro_valor);
+        }else {
+            val = 1;
+            segundo_valor = Number(display.textContent);
+            console.log(segundo_valor);
+    
+            const result = primeiro_valor / segundo_valor;
+            console.log(primeiro_valor + '/' + segundo_valor + '=' + result);
+            display.innerText = result;
+        }
+    }
+    
+    multiplicacao(){
+        op_to_do = 'multiplicacao';
+    
+        if(val == 1) {
+            primeiro_valor = Number(display.textContent);
+            console.log(primeiro_valor);
+        }else {
+            val = 1;
+            segundo_valor = Number(display.textContent);
+            console.log(segundo_valor);
+    
+            const result = primeiro_valor * segundo_valor;
+            console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
+            display.innerText = result;
+        }
+    }
+
+    result(){
+        var result;
+    
+        if(primeiro_valor != null){
+            val = 1;
+    
+            if(segundo_valor != null)
+            {
+                primeiro_valor = Number(display.textContent);
+                console.log(primeiro_valor);
+            }else {
+                segundo_valor = Number(display.textContent);
+                console.log(segundo_valor);
+            }
+            
+            if(op_to_do === 'soma'){
+                result = primeiro_valor + segundo_valor;
+                console.log(primeiro_valor + '+' + segundo_valor + '=' + result);
+            }else if(op_to_do === 'subtracao'){
+                result = primeiro_valor - segundo_valor;
+                console.log(primeiro_valor + '-' + segundo_valor + '=' + result);
+            }else if(op_to_do === 'divisao'){
+                result = primeiro_valor / segundo_valor;
+                console.log(primeiro_valor + '/' + segundo_valor + '=' + result);
+            } else if (op_to_do === 'multiplicacao'){
+                result = primeiro_valor * segundo_valor;
+                console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
+            }
+                
+            display.innerText = result;
+        }
+    } 
+
+    insert1(){
+        checkDisplay();
+        display.textContent += '1';
+    }
+
+    insert2(){
+        checkDisplay();
+        display.textContent += '2';
+    }
+
+    insert3(){
+        checkDisplay();
+        display.textContent += '3';
+    }
+
+    insert4(){
+        checkDisplay();
+        display.textContent += '4';
+    }
+
+    insert5(){
+        checkDisplay();
+        display.textContent += '5';
+    }
+
+    insert6(){
+        checkDisplay();
+        display.textContent += '6';
+    }
+
+    insert7(){
+        checkDisplay();
+        display.textContent += '7';
+    }
+
+    insert8(){
+        checkDisplay();
+        display.textContent += '8';
+    }
+
+    insert9(){
+        checkDisplay();
+        display.textContent += '9';
+    }
+
+    insert0(){
+        checkDisplay();
+        display.textContent += '0';
+    }
+}
+
+var calc = new calculadora();
 
 /**
  * Função que checa 
@@ -39,50 +200,6 @@ function checkDisplay(){
 }
 
 /**
- * Funções de inserção
- */
-function insert1(){
-    checkDisplay();
-    display.textContent += '1';
-}
-function insert2(){
-    checkDisplay();
-    display.textContent += '2';
-}
-function insert3(){
-    checkDisplay();
-    display.textContent += '3';
-}
-function insert4(){
-    checkDisplay();
-    display.textContent += '4';
-}
-function insert5(){
-    checkDisplay();
-    display.textContent += '5';
-}
-function insert6(){
-    checkDisplay();
-    display.textContent += '6';
-}
-function insert7(){
-    checkDisplay();
-    display.textContent += '7';
-}
-function insert8(){
-    checkDisplay();
-    display.textContent += '8';
-}
-function insert9(){
-    checkDisplay();
-    display.textContent += '9';
-}
-function insert0(){
-    checkDisplay();
-    display.textContent += '0';
-}
-
-/**
  * Função de limpeza
  */
 function clean(){
@@ -93,110 +210,4 @@ function clean(){
 
     primeiro_valor = null;
     segundo_valor = null;
-}
-
-/**
- * Funções de operações
- */
-
-function result(){
-    var result;
-
-    if(primeiro_valor != null){
-        val = 1;
-
-        if(segundo_valor != null)
-        {
-            primeiro_valor = Number(display.textContent);
-            console.log(primeiro_valor);
-        }else {
-            segundo_valor = Number(display.textContent);
-            console.log(segundo_valor);
-        }
-        
-        if(op_to_do === 'soma'){
-            result = primeiro_valor + segundo_valor;
-            console.log(primeiro_valor + '+' + segundo_valor + '=' + result);
-        }else if(op_to_do === 'subtracao'){
-            result = primeiro_valor - segundo_valor;
-            console.log(primeiro_valor + '-' + segundo_valor + '=' + result);
-        }else if(op_to_do === 'divisao'){
-            result = primeiro_valor / segundo_valor;
-            console.log(primeiro_valor + '/' + segundo_valor + '=' + result);
-        } else if (op_to_do === 'multiplicacao'){
-            result = primeiro_valor * segundo_valor;
-            console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
-        }
-            
-        display.innerText = result;
-    }
-}
-
-function soma(){
-    op_to_do = 'soma';
-
-    if(val == 1) {
-        primeiro_valor = Number(display.textContent);
-        console.log(primeiro_valor);
-    }else {
-        val = 1;
-        segundo_valor = Number(display.textContent);
-        console.log(segundo_valor);
-
-        const result = primeiro_valor + segundo_valor;
-        console.log(primeiro_valor + '+' + segundo_valor + '=' + result);
-        display.innerText = result;
-    }
-
-}
-
-function subtracao(){
-    op_to_do = 'subtracao';
-
-    if(val == 1) {
-        primeiro_valor = Number(display.textContent);
-        console.log(primeiro_valor);
-    }else {
-        val = 1;
-        segundo_valor = Number(display.textContent);
-        console.log(segundo_valor);
-
-        const result = primeiro_valor - segundo_valor;
-        console.log(primeiro_valor + '-' + segundo_valor + '=' + result);
-        display.innerText = result;
-    }
-}
-
-function divisao(){
-    op_to_do = 'divisao';
-
-    if(val == 1) {
-        primeiro_valor = Number(display.textContent);
-        console.log(primeiro_valor);
-    }else {
-        val = 1;
-        segundo_valor = Number(display.textContent);
-        console.log(segundo_valor);
-
-        const result = primeiro_valor / segundo_valor;
-        console.log(primeiro_valor + '/' + segundo_valor + '=' + result);
-        display.innerText = result;
-    }
-}
-
-function multiplicacao(){
-    op_to_do = 'multiplicacao';
-
-    if(val == 1) {
-        primeiro_valor = Number(display.textContent);
-        console.log(primeiro_valor);
-    }else {
-        val = 1;
-        segundo_valor = Number(display.textContent);
-        console.log(segundo_valor);
-
-        const result = primeiro_valor * segundo_valor;
-        console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
-        display.innerText = result;
-    }
 }
