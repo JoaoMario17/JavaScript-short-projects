@@ -1,8 +1,9 @@
-//Variaveis
+//Variaveis auxiliares
 const display = document.getElementById('display');
 let op_to_do = 'none';
-let val = 1;
+let stacked_operator = false;
 
+//Valores utilizados nas operações
 var primeiro_valor = null;
 var segundo_valor = null;
 
@@ -28,20 +29,29 @@ const AC = document.getElementById('btAC');
 
 class calculadora {
 
+    bt_just_pressed = false;
+    continuous_operation = false;
+
     soma(){
-        console.log("oi")
         op_to_do = 'soma';
+        this.bt_just_pressed = true;
     
-        if(val == 1) {
+        if(!stacked_operator || this.continuous_operation) {
             primeiro_valor = Number(display.textContent);
+            segundo_valor = null;
             console.log(primeiro_valor);
-        }else {
-            val = 1;
+
+            stacked_operator = true;
+            this.continuous_operation = false;
+        }else{
             segundo_valor = Number(display.textContent);
             console.log(segundo_valor);
     
             const result = primeiro_valor + segundo_valor;
             console.log(primeiro_valor + '+' + segundo_valor + '=' + result);
+
+            primeiro_valor = result;
+            
             display.innerText = result;
         }
     
@@ -49,60 +59,80 @@ class calculadora {
 
     subtracao(){
         op_to_do = 'subtracao';
+        this.bt_just_pressed = true;
     
-        if(val == 1) {
+        if(!stacked_operator) {
             primeiro_valor = Number(display.textContent);
+            segundo_valor = null;
             console.log(primeiro_valor);
-        }else {
-            val = 1;
+
+            stacked_operator = true;
+            this.continuous_operation = false;
+        }else{
             segundo_valor = Number(display.textContent);
             console.log(segundo_valor);
     
             const result = primeiro_valor - segundo_valor;
             console.log(primeiro_valor + '-' + segundo_valor + '=' + result);
+
+            primeiro_valor = result;
+            
             display.innerText = result;
         }
     }
 
     divisao(){
         op_to_do = 'divisao';
+        this.bt_just_pressed = true;
     
-        if(val == 1) {
+        if(!stacked_operator) {
             primeiro_valor = Number(display.textContent);
+            segundo_valor = null;
             console.log(primeiro_valor);
-        }else {
-            val = 1;
+
+            stacked_operator = true;
+            this.continuous_operation = false;
+        }else{
             segundo_valor = Number(display.textContent);
             console.log(segundo_valor);
     
             const result = primeiro_valor / segundo_valor;
             console.log(primeiro_valor + '/' + segundo_valor + '=' + result);
+
+            primeiro_valor = result;
+            
             display.innerText = result;
         }
     }
     
     multiplicacao(){
         op_to_do = 'multiplicacao';
+        this.bt_just_pressed = true;
     
-        if(val == 1) {
+        if(!stacked_operator) {
             primeiro_valor = Number(display.textContent);
+            segundo_valor = null;
             console.log(primeiro_valor);
-        }else {
-            val = 1;
+
+            stacked_operator = true;
+            this.continuous_operation = false;
+        }else{
             segundo_valor = Number(display.textContent);
             console.log(segundo_valor);
     
             const result = primeiro_valor * segundo_valor;
             console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
+
+            primeiro_valor = result;
+            
             display.innerText = result;
         }
     }
 
     result(){
-        var result;
-    
+        this.bt_just_pressed = true;
+
         if(primeiro_valor != null){
-            val = 1;
     
             if(segundo_valor != null)
             {
@@ -111,7 +141,11 @@ class calculadora {
             }else {
                 segundo_valor = Number(display.textContent);
                 console.log(segundo_valor);
+
+                stacked_operator = false;
             }
+        
+            var result;
             
             if(op_to_do === 'soma'){
                 result = primeiro_valor + segundo_valor;
@@ -126,7 +160,8 @@ class calculadora {
                 result = primeiro_valor * segundo_valor;
                 console.log(primeiro_valor + '*' + segundo_valor + '=' + result);
             }
-                
+            
+            this.continuous_operation = true;
             display.innerText = result;
         }
     } 
@@ -180,6 +215,21 @@ class calculadora {
         checkDisplay();
         display.textContent += '0';
     }
+
+    /**
+    * Função de limpeza
+    */
+    clean(){
+        this.bt_just_pressed = true;
+
+        display.innerText = '0';
+        
+        stacked_operator = false;
+        op_to_do = 'none';
+
+        primeiro_valor = null;
+        segundo_valor = null;
+    }
 }
 
 var calc = new calculadora();
@@ -193,21 +243,8 @@ function checkDisplay(){
     
     if(content === '0'){
         display.innerText = '';
-    } else if(op_to_do != 'none' && val === 1){
+    } else if(op_to_do != 'none' && calc.bt_just_pressed){
+        calc.bt_just_pressed = false;
         display.innerText = '';
-        val = 2;
     }
-}
-
-/**
- * Função de limpeza
- */
-function clean(){
-    display.innerText = '0';
-    
-    val = 1;
-    op_to_do = 'none';
-
-    primeiro_valor = null;
-    segundo_valor = null;
 }
