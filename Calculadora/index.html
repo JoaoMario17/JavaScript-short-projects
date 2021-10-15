@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <div class="calculator">
+            <div id="display">0</div>
+            <div class="bts-container">
+                <button class="bt" id="bt7" onclick="insert7()">7</button>
+                <button class="bt" id="bt8" onclick="insert8()">8</button>
+                <button class="bt" id="bt9" onclick="insert9()">9</button>
+                <button class="bt" id="bt/" onclick="divisao()">/</button>
+                <button class="bt" id="bt4" onclick="insert4()">4</button>
+                <button class="bt" id="bt5" onclick="insert5()">5</button>
+                <button class="bt" id="bt6" onclick="insert6()">6</button>
+                <button class="bt" id="bt-" onclick="subtracao()">-</button>
+                <button class="bt" id="bt1" onclick="insert1()">1</button>
+                <button class="bt" id="bt2" onclick="insert2()">2</button>
+                <button class="bt" id="bt3" onclick="insert3()">3</button>
+                <button class="bt" id="bt+" onclick="soma()">+</button>
+                <button class="bt" id="bt0" onclick="insert0()">0</button>
+                <button class="bt" id="btAC" onclick="clean()">AC</button>
+                <button class="bt" id="bt=" onclick="result()">=</button>
+                <button class="bt" id="bt," onclick="multiplicacao()">x </button>
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
